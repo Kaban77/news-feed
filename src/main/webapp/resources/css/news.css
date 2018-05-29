@@ -1,0 +1,34 @@
+.no-result
+{
+    cursor: default;
+}
+
+.post
+{
+    padding-left: 30%;
+    padding-top: 2%;
+    padding-right: 15%;
+    cursor: default;
+}
+
+.search
+{
+    float: left;
+    padding-left: 20%;
+}
+
+.text
+{
+    font-size: 14pt;
+}
+
+.time
+{
+    font-size: 10pt;
+    font-style: italic;
+}
+
+#main
+{
+    float: left;
+}

@@ -5,16 +5,17 @@
 
 .post
 {
-    padding-left: 30%;
+    padding-left: 150px;
     padding-top: 2%;
-    padding-right: 15%;
+    width: 500px;
+    overflow: hidden;
     cursor: default;
 }
 
 .search
 {
-    float: left;
-    padding-left: 20%;
+    float: right;
+    /*padding-left: 20%;*/
 }
 
 .text

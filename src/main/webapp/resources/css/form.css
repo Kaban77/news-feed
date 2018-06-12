@@ -1,0 +1,26 @@
+.area
+{
+    padding-left: 450px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13pt;
+    width: 120px;
+}
+
+#caption
+{
+    width: 120px;
+    height: 20px;
+}
+
+#category
+{
+    width: 120px;
+    height: 25px;
+}
+
+#body
+{
+    width: 350px;
+    height: 150px;
+}

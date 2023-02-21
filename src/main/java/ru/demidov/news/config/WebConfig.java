@@ -1,4 +1,4 @@
-package ru.demidov.config;
+package ru.demidov.news.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -40,10 +40,12 @@ public class WebConfig implements WebMvcConfigurer {
         return new StandardServletMultipartResolver();
     }
 
+	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
+	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }

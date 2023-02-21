@@ -1,11 +1,8 @@
-package ru.demidov.interfaces;
-
-import ru.demidov.objects.News;
+package ru.demidov.news;
 
 import java.util.List;
 
 public interface NewsManager {
-
 
     List<News> searchNewsByContent(String searchLine);
     List<News> getAllNews();

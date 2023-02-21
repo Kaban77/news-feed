@@ -1,4 +1,4 @@
-package ru.demidov.config;
+package ru.demidov.news.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

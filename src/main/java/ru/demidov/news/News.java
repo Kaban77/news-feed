@@ -1,16 +1,18 @@
-package ru.demidov.objects;
+package ru.demidov.news;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class News {
     private Integer id;
     private String caption;
     private String body;
-    private String publicationDate;
+	private LocalDateTime publicationDate;
     private String category;
 
     @Id
@@ -45,11 +47,11 @@ public class News {
 
     @Basic
     @Column(name = "PUBLICATION_DATE")
-    public String getPublicationDate() {
+	public LocalDateTime getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(String publicationDate) {
+	public void setPublicationDate(LocalDateTime publicationDate) {
         this.publicationDate = publicationDate;
     }
 

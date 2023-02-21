@@ -1,4 +1,6 @@
-package ru.demidov.action;
+package ru.demidov.news.impl;
+
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,12 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ru.demidov.interfaces.NewsManager;
-import ru.demidov.objects.News;
 
-import javax.persistence.Query;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Query;
+import ru.demidov.news.News;
+import ru.demidov.news.NewsManager;
 
 @Component
 public class NewsManagerImpl implements NewsManager {
@@ -20,7 +20,7 @@ public class NewsManagerImpl implements NewsManager {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private static final Logger logger = LoggerFactory.getLogger(NewsManagerImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewsManagerImpl.class);
 
     @Transactional(readOnly = true)
     public List<News> searchNewsByContent(String searchLine) {
@@ -30,8 +30,8 @@ public class NewsManagerImpl implements NewsManager {
             Query query = session.createQuery(hql);
             return query.setParameter("searchLine", "%" + searchLine + "%").getResultList();
         } catch (Exception e) {
-            logger.info(e.getMessage());
-            return new ArrayList<News>();
+			LOGGER.error("Error!", e);
+			return List.of();
         }
     }
 
@@ -42,8 +42,8 @@ public class NewsManagerImpl implements NewsManager {
             return session.createQuery("from News").list();
 
         } catch(Exception e) {
-            logger.info(e.getMessage());
-            return new ArrayList<News>();
+			LOGGER.error("Error!", e);
+			return List.of();
         }
     }
 

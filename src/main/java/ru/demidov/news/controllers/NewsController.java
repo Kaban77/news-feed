@@ -2,6 +2,8 @@ package ru.demidov.news.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,8 @@ public class NewsController {
 
 	private final NewsManager newsManager;
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
+
 	public NewsController(NewsManager newsManager) {
 		this.newsManager = newsManager;
 	}
@@ -27,12 +31,22 @@ public class NewsController {
 	@GetMapping(value = "/get-all", produces = "application/json")
     @ResponseBody
     public List<News> getNews() {
-        return newsManager.getAllNews();
+		try {
+			return newsManager.getAllNews();
+		} catch (Exception e) {
+			LOGGER.error("Error!", e);
+			throw new RuntimeException(e);
+		}
     }
 
 	@GetMapping(value = "/find-news", produces = "application/json")
     @ResponseBody
     public List<News> findNews(@RequestParam(value = "text") String searchLine) {
-        return newsManager.searchNewsByContent(searchLine);
+		try {
+			return newsManager.searchNewsByContent(searchLine);
+		} catch (Exception e) {
+			LOGGER.error("Error!", e);
+			throw new RuntimeException(e);
+		}
     }
 }

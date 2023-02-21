@@ -2,6 +2,9 @@ package ru.demidov.news;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +15,7 @@ public class News {
     private Integer id;
     private String caption;
     private String body;
+	@JsonFormat(shape = Shape.STRING, pattern = "dd.mm.YYYY HH:mm:ss")
 	private LocalDateTime publicationDate;
     private String category;
 

@@ -14,6 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import ru.demidov.news.News;
+
 @Configuration
 @ComponentScan("ru.demidov")
 @EnableTransactionManagement
@@ -47,8 +49,11 @@ public class HibernateSessionFactory {
 				.applySetting(AvailableSettings.DIALECT, "org.hibernate.dialect.PostgreSQLDialect")
 				.applySetting(AvailableSettings.SHOW_SQL, "true").build();
 
-		var metadata = new MetadataSources(serviceRegistry).addPackage("ru.demidov").getMetadataBuilder()
-				.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
+		var metadata = new MetadataSources(serviceRegistry).addPackage("ru.demidov")
+				.addAnnotatedClass(News.class)
+				.getMetadataBuilder()
+				.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
+				.build();
 
 		return metadata.getSessionFactoryBuilder().build();
     }
